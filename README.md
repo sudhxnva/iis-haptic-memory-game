@@ -5,6 +5,8 @@ joystick. The game starts with one move and adds another each time you get it
 right. Your answer appears on the page as you enter it; the actual pattern is
 shown after the last move, or when the timer runs out.
 
+YouTube video demo: https://youtube.com/shorts/3NSUQQfxofE
+
 ## Wiring
 
 The board is an ESP32 with an L293D motor driver. Motor A goes on the left of
@@ -71,25 +73,5 @@ answers. `STOP` switches off the motors. `PING` keeps the connection alive;
 after 2.5 seconds without a heartbeat, the board stops. `STATUS` reports the
 six motor control pins for troubleshooting.
 
-## Checks
-
-```sh
-node --test tests/*.test.mjs
-clang++ -std=c++11 -Wall -Wextra tests/firmware.cpp -o /tmp/haptic-tests
-/tmp/haptic-tests
-clang++ -std=c++11 -Wall -Wextra tests/firmware-integration.cpp -o /tmp/haptic-integration
-/tmp/haptic-integration
-arduino-cli compile --fqbn esp32:esp32:esp32 .
-```
-
-For browser checks, run the local server and install Playwright:
-
-```sh
-npm install --no-save playwright
-npx playwright install chromium
-node tests/browser-check.mjs
-```
-
-Format the web code with `npx prettier --write web/*.mjs web/*.css web/*.html`.
 The C++ files use clang-format with the included configuration. The bundled
 p5.js file is third-party minified code and is kept as distributed.
