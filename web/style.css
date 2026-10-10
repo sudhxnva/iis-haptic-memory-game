@@ -1,0 +1,294 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  background: #fff;
+  color: #222;
+  font:
+    16px Arial,
+    sans-serif;
+}
+.page {
+  max-width: 850px;
+  margin: 32px auto;
+  padding: 0 20px;
+}
+h1 {
+  font-size: 28px;
+  font-weight: bold;
+  margin: 0 0 8px;
+}
+header p {
+  margin: 0 0 24px;
+}
+h2 {
+  font-size: 20px;
+  margin: 0;
+}
+h3 {
+  font-size: 24px;
+  margin: 16px 0 8px;
+}
+p {
+  line-height: 1.45;
+}
+small {
+  font-size: 12px;
+  color: #555;
+}
+button {
+  font: inherit;
+  color: #222;
+  background: #eee;
+  border: 1px solid #777;
+  border-radius: 2px;
+  padding: 7px 12px;
+  cursor: pointer;
+}
+button:hover:not(:disabled) {
+  background: #ddd;
+}
+button:active:not(:disabled) {
+  transform: translateY(1px);
+}
+button:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+button:focus-visible,
+input:focus-visible,
+summary:focus-visible {
+  outline: 3px solid #255bd6;
+  outline-offset: 3px;
+}
+.connection-box {
+  border-bottom: 1px solid #aaa;
+  padding-bottom: 16px;
+  margin-bottom: 20px;
+}
+.connection-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+#connection {
+  font-size: 13px;
+  color: #555;
+}
+#connection.connected {
+  color: #176528;
+}
+#notice {
+  margin: 10px 0 4px;
+  font-size: 14px;
+}
+#notice.error {
+  color: #b02020;
+}
+.game {
+  border: 2px solid #222;
+  padding: 20px;
+}
+.round-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #aaa;
+}
+.round-header > span {
+  font-size: 14px;
+}
+.game-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+button.start-button {
+  background: #fff080;
+  border: 2px solid #222;
+  font-weight: bold;
+}
+button.start-button:hover:not(:disabled) {
+  background: #ffdf40;
+}
+.status-line {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+}
+#timer {
+  font-size: 18px;
+  font-weight: bold;
+  font-variant-numeric: tabular-nums;
+}
+.time-track {
+  height: 6px;
+  background: #eee;
+  margin-bottom: 20px;
+}
+#time-bar {
+  height: 100%;
+  width: 0;
+  background: #255bd6;
+}
+.lane {
+  padding: 16px 0;
+  border-top: 1px dashed #aaa;
+}
+.lane-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+.arrows {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  min-height: 52px;
+  align-items: center;
+}
+.arrow {
+  position: relative;
+  width: 48px;
+  height: 50px;
+  border: 1px solid #888;
+  background: #f5f5f5;
+  font-size: 32px;
+  display: grid;
+  place-items: center;
+}
+.arrow small {
+  position: absolute;
+  bottom: 2px;
+  right: 3px;
+  font-size: 9px;
+}
+.arrow.correct {
+  background: #d7f0cc;
+  border-color: #408537;
+}
+.arrow.wrong {
+  background: #ffd6d6;
+  border-color: #b02020;
+}
+.arrow.missing {
+  border-style: dashed;
+  color: #777;
+}
+.empty {
+  font-size: 14px;
+  color: #777;
+}
+#result {
+  margin: 4px 0 0;
+  min-height: 24px;
+  font-weight: bold;
+}
+#result.success {
+  color: #176528;
+}
+#result.failure {
+  color: #b02020;
+}
+.extras {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  margin-top: 26px;
+}
+.instrument h2 {
+  display: inline-block;
+  margin-right: 10px;
+}
+#joystick-canvas {
+  width: 100%;
+  height: 150px;
+  margin-top: 8px;
+}
+canvas {
+  display: block;
+  max-width: 100%;
+}
+.instrument p {
+  font-size: 13px;
+  margin: 8px 0;
+}
+#sim-controls {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 14px 0;
+}
+#sim-controls[hidden] {
+  display: none;
+}
+#sim-controls small {
+  width: 100%;
+}
+summary {
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 20px;
+  margin-bottom: 16px;
+}
+.setup-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 20px;
+}
+.setup-actions button {
+  font-size: 12px;
+  padding: 6px 8px;
+}
+.sliders {
+  display: grid;
+  gap: 14px;
+}
+.sliders label {
+  display: block;
+  font-size: 14px;
+}
+.sliders output {
+  float: right;
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+}
+input[type='range'] {
+  display: block;
+  width: 100%;
+  accent-color: #255bd6;
+  margin: 8px 0 0;
+}
+.invert {
+  display: block;
+  font-size: 13px;
+  margin: 18px 0;
+}
+@media (max-width: 600px) {
+  .page {
+    margin: 20px auto;
+    padding: 0 14px;
+  }
+  h1 {
+    font-size: 28px;
+  }
+  .game {
+    padding: 14px;
+  }
+  .round-header {
+    align-items: flex-start;
+  }
+  .extras {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}

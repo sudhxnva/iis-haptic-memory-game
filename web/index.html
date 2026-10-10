@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Haptic memory game</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="style.css" />
+    <script src="vendor/p5.min.js" defer></script>
+    <script type="module" src="app.mjs"></script>
+  </head>
+  <body>
+    <main class="page">
+      <header>
+        <h1>left, right, repeat.</h1>
+        <p>How many moves can you remember?</p>
+      </header>
+
+      <section class="connection-box" aria-label="Connection">
+        <div class="connection-actions">
+          <button id="connect">Connect ESP32</button>
+          <button id="simulate">Play with keyboard</button>
+          <span id="connection">Disconnected</span>
+        </div>
+        <p id="notice" role="status" aria-live="polite">
+          Connect the board, or try it with the arrow keys.
+        </p>
+      </section>
+
+      <section class="game" aria-label="Memory game">
+        <div class="round-header">
+          <h2>Round <span id="level">1</span></h2>
+          <span
+            ><b id="length">1</b> <span id="length-label">move to remember</span></span
+          >
+        </div>
+        <div class="game-actions">
+          <button id="start" class="start-button" disabled>Start round</button>
+          <button id="restart" disabled>Restart</button>
+          <button id="stop" disabled>Stop</button>
+        </div>
+        <div class="status-line">
+          <strong id="timer" aria-label="Response time remaining">—</strong>
+        </div>
+        <h3 id="instruction">Press start.</h3>
+        <div class="time-track"><div id="time-bar"></div></div>
+        <div class="lane">
+          <div class="lane-label">
+            <b>Your moves</b><span id="answer-count">0 / 1</span>
+          </div>
+          <div id="answer" class="arrows" aria-label="Your submitted sequence">
+            <span class="empty">No moves yet.</span>
+          </div>
+        </div>
+        <div class="lane">
+          <div class="lane-label">
+            <b>Actual pattern</b><small id="reveal-status">Hidden for now</small>
+          </div>
+          <div id="expected" class="arrows" aria-label="Expected sequence">
+            <span class="empty">Shown when you finish.</span>
+          </div>
+        </div>
+        <p id="result" aria-live="polite"></p>
+      </section>
+
+      <div class="extras">
+        <section class="instrument">
+          <h2>Joystick</h2>
+          <small id="input-readout">X 0.00 · Y 0.00</small>
+          <div
+            id="joystick-canvas"
+            aria-label="Live joystick and motor visualization"
+          ></div>
+          <p id="input-help">Let it return to the middle between moves.</p>
+          <div id="sim-controls" hidden>
+            <button id="sim-left" aria-label="Simulate left">← Left</button>
+            <button id="sim-right" aria-label="Simulate right">Right →</button>
+            <small>Arrow keys work too. Release between moves.</small>
+          </div>
+        </section>
+
+        <details open>
+          <summary>Motor settings</summary>
+          <div class="settings-content">
+            <div class="setup-actions">
+              <button id="calibrate" disabled>Calibrate joystick</button>
+              <button id="test-left" disabled>Test left</button>
+              <button id="test-right" disabled>Test right</button>
+            </div>
+            <div class="sliders">
+              <label
+                >Motor pulse <output id="pulse-value">120 ms</output
+                ><input id="pulse" type="range" min="50" max="1000" step="10" value="120"
+              /></label>
+              <label
+                >Pause between motors <output id="pause-value">120 ms</output
+                ><input id="pause" type="range" min="0" max="1000" step="10" value="120"
+              /></label>
+              <label
+                >Gap between moves <output id="gap-value">600 ms</output
+                ><input id="gap" type="range" min="100" max="2000" step="50" value="600"
+              /></label>
+              <label
+                >Motor strength <output id="pwm-value">200 / 255</output
+                ><input id="pwm" type="range" min="1" max="255" step="1" value="200"
+              /></label>
+            </div>
+            <label class="invert"
+              ><input id="invert" type="checkbox" /> Flip joystick left / right</label
+            >
+          </div>
+        </details>
+      </div>
+    </main>
+  </body>
+</html>
